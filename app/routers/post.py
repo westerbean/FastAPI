@@ -44,6 +44,10 @@ def get_latest_post(db: Session = Depends(get_db)):
     # cursor.execute("""SELECT * FROM posts WHERE created_at in ( SELECT MAX(created_at) from posts)""")
     # post = cursor.fetchone()
     post = db.query(models.Post, func.count(models.Vote.post_id).label("votes")).join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True).group_by(models.Post.id).order_by(desc(models.Post.created_at)).first()
+    if not post:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail = f"There is no post")
+    return post
     return post
 
 
