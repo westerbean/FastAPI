@@ -48,7 +48,6 @@ def get_latest_post(db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail = f"There is no post")
     return post
-    return post
 
 
 @router.get("/{id}", response_model=schemas.PostOut)
