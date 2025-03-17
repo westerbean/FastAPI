@@ -8,11 +8,11 @@ Get the latest post.
 
 # Create and activate a virtual environment:
 
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+`python -m venv venv`
+`source venv/bin/activate`  # On Windows: `venv\Scripts\activate`
 
 # Install dependencies
-pip install fastapi psycopg2-binary uvicorn
+`pip install -r requirements.txt`
 
 # Configure PostgreSQL:
 
@@ -38,7 +38,7 @@ CREATE TABLE posts (
 
 # Run the app:
 
-uvicorn main:app --reload
+`uvicorn main:app --reload`
 
 # API Endpoints
  GET /posts: Fetch all posts.
